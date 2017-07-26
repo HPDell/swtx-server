@@ -38,7 +38,7 @@ export function nearpeople(req:express.Request, res:express.Response, next:expre
             Users\
         RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
         WHERE\
-            Users.UserID <> ` + params.UserID.toString() + `\
+            Users.UserID <> ' + params.UserID.toString() + '\
         GROUP BY\
             Users.UserID\
         ORDER BY\

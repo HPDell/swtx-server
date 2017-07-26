@@ -28,7 +28,7 @@ function nearpeople(req, res, next) {
             Users\
         RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
         WHERE\
-            Users.UserID <> ` + params.UserID.toString() + `\
+            Users.UserID <> ' + params.UserID.toString() + '\
         GROUP BY\
             Users.UserID\
         ORDER BY\
