@@ -18,7 +18,7 @@ function nearpeople(req, res, next) {
         password: "admin",
         database: "swtx"
     });
-    var params = req.params;
+    var params = req.query;
     var queryStrings = 'SELECT\
             Users.UserName,\
             Position.PositionTime,\
@@ -28,7 +28,7 @@ function nearpeople(req, res, next) {
             Users\
         RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
         WHERE\
-            Users.UserID <> ' + params.UserID.toString() + '\
+            Users.UserID <> ' + params.UserID + '\
         GROUP BY\
             Users.UserID\
         ORDER BY\
