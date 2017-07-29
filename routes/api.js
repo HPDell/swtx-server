@@ -4,6 +4,6 @@ var router = express.Router();
 
 var nearpeople = require("./api/nearpeople");
 
-router.use("/nearpeople", nearpeople.nearpeople);
+router.get("/nearpeople", nearpeople.nearpeople);
 
 module.exports = router;
