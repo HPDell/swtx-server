@@ -13,6 +13,16 @@
             "problemMatcher": [
                 "$tsc"
             ]
+        },{
+            "taskName": "tsc -w",
+            "command": "tsc",
+            "type": "shell",
+            "args": [
+                "${file}", "--watch"
+            ],
+            "problemMatcher": [
+                "$tsc"
+            ]
         }
     ]
 }
