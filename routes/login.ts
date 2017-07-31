@@ -104,8 +104,8 @@ function updateIp(user:string, ip:string) {
     });
     connection.connect();
     // 更新IP
-    var queryString:string = "UPDATE Users SET Users.UserLastIP = '" + ip + "' WHERE Users.UserName = '" + user + "'";
-    connection.query(queryString, (err:mysql.IError, results:Array<ILoginQueryResult>) => {
+    var queryString:string = "UPDATE Users SET UserLastIP = '" + ip + "' WHERE UserName = '" + user + "'";
+    connection.query(queryString, (err:mysql.IError) => {
         if (err) {
             console.log(err.message);
         }

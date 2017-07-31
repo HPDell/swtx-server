@@ -29,21 +29,20 @@ export function nearpeople(req:express.Request, res:express.Response, next:expre
 
     var params:INearPeopleQueryParams = req.query;
     var queryStrings:string = 
-        'SELECT\
-            Users.UserName,\
-            Position.PositionTime,\
-            Position.PositionLat,\
-            Position.PositionLng\
-        FROM\
-            Users\
-        RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
-        WHERE\
-            Users.UserID <> ' + params.UserID + '\
-        GROUP BY\
-            Users.UserID\
-        ORDER BY\
-            Position.PositionTime DESC\
-        LIMIT 0, 1';
+        'SELECT corsstable.UserName, corsstable.PositionTime, corsstable.PositionLat, corsstable.PositionLng\
+        FROM (SELECT\
+        				Users.UserName,\
+        				Position.PositionTime,\
+        				Position.PositionLat,\
+        				Position.PositionLng\
+        			FROM\
+        				Users\
+        			RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
+        			WHERE\
+        				Users.UserID <> ' + params.UserID + '\
+        			ORDER BY\
+        				Position.PositionTime DESC) AS corsstable\
+        GROUP BY corsstable.UserName';
     connection.query(queryStrings, function (err:mysql.IError, results:any) {
         if (err) {
             res.json({

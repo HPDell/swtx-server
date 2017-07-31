@@ -1,19 +1,37 @@
 /// <reference path="../../typings/index.d.ts" />
-
-import express = require('express');
+import net = require('net');
 import mysql = require('mysql');
 
-interface INearPeopleCallParam {
-    UserName: string
+interface INearPeopleCallParams {
+    UserName:string;
 }
 
-export function nearpeoplecall(req:express.Request, res:express.Response, next:express.NextFunction) {
-    var data:INearPeopleCallParam = req.query;
-    if (data === undefined) {
-        res.json({
-            result: false
-        })
-        return;
+class NearPeopleCallMsg {
+    statueCode:string;
+    userName:string;
+
+    constructor(statue:number, message?:string) {
+        
     }
-    var queryString:string = "SELECT "
+}
+
+/**
+ * 启动Socket服务器
+ * @param port 端口
+ */
+export function StartSocketServer(port:number) {
+    var server = net.createServer(), clientList = [];
+    // 监听连接
+    server.on("connection", function (client:net.Socket) {
+        // 接收消息
+        client.on("data", function (msg:string) {
+            try {
+                var data:INearPeopleCallParams = JSON.parse(msg);
+                
+            } catch (error) {
+                console.log(error);
+            }
+            
+        })
+    })
 }

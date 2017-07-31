@@ -95,8 +95,8 @@ function updateIp(user, ip) {
     });
     connection.connect();
     // 更新IP
-    var queryString = "UPDATE Users SET Users.UserLastIP = '" + ip + "' WHERE Users.UserName = '" + user + "'";
-    connection.query(queryString, function (err, results) {
+    var queryString = "UPDATE Users SET UserLastIP = '" + ip + "' WHERE UserName = '" + user + "'";
+    connection.query(queryString, function (err) {
         if (err) {
             console.log(err.message);
         }
