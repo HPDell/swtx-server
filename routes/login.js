@@ -101,4 +101,5 @@ function updateIp(user, ip) {
             console.log(err.message);
         }
     });
+    connection.end();
 }

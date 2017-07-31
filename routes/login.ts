@@ -110,4 +110,5 @@ function updateIp(user:string, ip:string) {
             console.log(err.message);
         }
     })
+    connection.end();
 }
