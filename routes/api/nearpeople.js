@@ -19,19 +19,23 @@ function nearpeople(req, res, next) {
         database: "swtx"
     });
     var params = req.query;
-    var queryStrings = 'SELECT corsstable.UserName, corsstable.PositionTime, corsstable.PositionLat, corsstable.PositionLng\
+    var queryStrings = 'SELECT corsstable.UserID, corsstable.UserName, corsstable.UserGender, corsstable.UserAverageRunTime, corsstable.UserAddress, corsstable.PositionTime, corsstable.PositionLat, corsstable.PositionLng\
         FROM (SELECT\
-        				Users.UserName,\
-        				Position.PositionTime,\
-        				Position.PositionLat,\
-        				Position.PositionLng\
-        			FROM\
-        				Users\
-        			RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
-        			WHERE\
-        				Users.UserID <> ' + params.UserID + '\
-        			ORDER BY\
-        				Position.PositionTime DESC) AS corsstable\
+                    Users.UserID\
+                    Users.UserName,\
+                    Users.UserGender,\
+                    Users.UserAverageRunTime,\
+                    Users.UserAddress,\
+                    Position.PositionTime,\
+                    Position.PositionLat,\
+                    Position.PositionLng\
+                FROM\
+                    Users\
+                RIGHT JOIN Position ON Users.UserID = Position.PositionUserID\
+                WHERE\
+                    Users.UserID <> ' + params.UserID + '\
+                ORDER BY\
+                    Position.PositionTime DESC) AS corsstable\
         GROUP BY corsstable.UserName';
     connection.query(queryStrings, function (err, results) {
         if (err) {
