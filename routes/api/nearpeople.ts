@@ -31,7 +31,7 @@ export function nearpeople(req:express.Request, res:express.Response, next:expre
     var queryStrings:string = 
         'SELECT corsstable.UserID, corsstable.UserName, corsstable.UserGender, corsstable.UserAverageRunTime, corsstable.UserAddress, corsstable.PositionTime, corsstable.PositionLat, corsstable.PositionLng\
         FROM (SELECT\
-                    Users.UserID\
+                    Users.UserID,\
                     Users.UserName,\
                     Users.UserGender,\
                     Users.UserAverageRunTime,\

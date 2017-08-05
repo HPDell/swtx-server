@@ -21,7 +21,7 @@ function nearpeople(req, res, next) {
     var params = req.query;
     var queryStrings = 'SELECT corsstable.UserID, corsstable.UserName, corsstable.UserGender, corsstable.UserAverageRunTime, corsstable.UserAddress, corsstable.PositionTime, corsstable.PositionLat, corsstable.PositionLng\
         FROM (SELECT\
-                    Users.UserID\
+                    Users.UserID,\
                     Users.UserName,\
                     Users.UserGender,\
                     Users.UserAverageRunTime,\
