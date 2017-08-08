@@ -1,15 +1,17 @@
 "use strict";
 exports.__esModule = true;
 var mysql = require("mysql");
+
 /**
  * 查询结果参数类型
  */
-// interface INearPeopleResult {
-//     /** 用户名 */     UserName: string;
-//     /** 更新时间 */   PositionTime: number;
-//     /** 经度 */       PositionLat: number;
-//     /** 纬度 */       PositionLng: number;
-// }
+// interface INearDrinksResult {
+//     /** id */     DrinkID: number;=
+//     /** 名字 */   DrinkName: string;
+//     /** 纬度 */       DrinkLat: number;
+//     /** 经度 */       DrinkLng: number;
+// } 
+
 function NearDrinks(req, res, next) {
     var connection = mysql.createConnection({
         host: "139.129.166.245",

@@ -5,9 +5,13 @@ var router = express.Router();
 var nearpeople = require("./api/nearpeople");
 var gyminfo = require('./api/gyminfo');
 var neardrinks = require('./api/neardrinks');
+var routestops = require("./api/routestops");
+var addrunninginfo = require("./api/addrunninginfo");
 
 router.get("/nearpeople", nearpeople.nearpeople);
 router.get("/gyminfo", gyminfo.GymInfo);
 router.get("/neardrinks", neardrinks.NearDrinks);
+router.get("/routestops", routestops.RouteStops);
+router.post("/addrunninginfo", addrunninginfo.AddRunningInfo);
 
 module.exports = router;
