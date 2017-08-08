@@ -15,8 +15,8 @@ interface INearDrinksQueryParams {
  * 查询结果参数类型
  */
 // interface INearDrinksResult {
-//     /** 用户名 */     DrinkID: number;
-//     /** 更新时间 */   DrinkName: string;
+//     /** id */     DrinkID: number;
+//     /** 名字 */   DrinkName: string;
 //     /** 纬度 */       DrinkLat: number;
 //     /** 经度 */       DrinkLng: number;
 // }
