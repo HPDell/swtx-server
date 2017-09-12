@@ -18,13 +18,13 @@ function NearDrinks(req, res, next) {
     connection.query(queryStrings, function (err, results) {
         if (err) {
             res.json({
-                neardrinks: []
+                RoadLamps: []
             });
             return;
         }
         else {
             res.json({
-                neardrinks: results
+                RoadLamps: results
             });
         }
     });
