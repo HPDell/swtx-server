@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mysql = require("mysql");
 
-function NearDrinks(req, res, next) {
+function RoadLamps(req, res, next) {
     var connection = mysql.createConnection({
         host: "139.129.166.245",
         port: 3306,
@@ -13,7 +13,7 @@ function NearDrinks(req, res, next) {
     var params = req.query;
     
     var queryStrings = "SELECT * FROM RoadLamp" + 
-    " WHERE RoadLamp.Lat > " + params.minLat + " and Drink.Lat < " + params.maxLat + 
+    " WHERE RoadLamp.Lat > " + params.minLat + " and RoadLamp.Lat < " + params.maxLat + 
     " and RoadLamp.Lng > " + params.minLng + " and RoadLamp.Lng < " + params.maxLng;
     connection.query(queryStrings, function (err, results) {
         if (err) {
@@ -30,4 +30,4 @@ function NearDrinks(req, res, next) {
     });
     connection.end();
 }
-exports.NearDrinks = NearDrinks;
+exports.RoadLamps = RoadLamps;
